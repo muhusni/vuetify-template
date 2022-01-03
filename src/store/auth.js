@@ -50,7 +50,7 @@ export default {
     async login({ dispatch, commit }, credentials) {
       await commit('SET_LOADING', true)
       commit('SET_LOGIN_ALERT', null)
-      await axios.post('login', credentials).then(function (response) {
+      await axios.post('auth/signin', credentials).then(function (response) {
         // console.log(response)
         // setTimeout(() => {, 5000)})
         // setTimeout(() => {
@@ -75,7 +75,7 @@ export default {
       }
 
       try {
-        await axios.get('me').then(function (response) {
+        await axios.get('auth/me').then(function (response) {
           commit('SET_USER', response.data)
         })
         //    .catch( error => {

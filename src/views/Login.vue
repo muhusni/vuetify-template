@@ -32,7 +32,7 @@
               <v-col cols="12">
                 <v-text-field
                   label="Email"
-                  v-model="form.email"
+                  v-model="form.username"
                   :rules="[rules.required]"
                   counter
                 ></v-text-field>
@@ -83,6 +83,7 @@ export default {
     return {
       form: {
         email: "",
+        username: "",
         password: "",
       },
       show: false,

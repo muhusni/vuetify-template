@@ -120,38 +120,40 @@
 
           <v-stepper-content step="2">
             <v-form ref="form2">
-            <v-row>
-              <v-col cols="12" md="4">
-                <v-text-field
-                  type="number"
-                  label="Jumlah Kemasan"
-                  v-model="jumlah_kemasan"
-                  :rules="[rules.required, rules.kemasan]"
-                  required
-                >
-                </v-text-field>
-              </v-col>
-              <v-col cols="12" md="4">
-                <v-autocomplete
-                  label="Jenis Kemasan"
-                  v-model="jenis_kemasan"
-                  :items="kemasan_items"
-                  :item-text="(item) => `${item.id_kemasan} - ${item.kemasan}`"
-                  item-value="id_kemasan"
-                  :rules="[rules.required]"
-                ></v-autocomplete>
-              </v-col>
-              <v-col cols="12" md="4">
-                <v-text-field
-                  type="number"
-                  label="Berat (KG)"
-                  v-model="berat"
-                  :rules="[rules.required]"
-                  required
-                >
-                </v-text-field>
-              </v-col>
-            </v-row>
+              <v-row>
+                <v-col cols="12" md="4">
+                  <v-text-field
+                    type="number"
+                    label="Jumlah Kemasan"
+                    v-model="jumlah_kemasan"
+                    :rules="[rules.required, rules.kemasan]"
+                    required
+                  >
+                  </v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-autocomplete
+                    label="Jenis Kemasan"
+                    v-model="jenis_kemasan"
+                    :items="kemasan_items"
+                    :item-text="
+                      (item) => `${item.id_kemasan} - ${item.kemasan}`
+                    "
+                    item-value="id_kemasan"
+                    :rules="[rules.required]"
+                  ></v-autocomplete>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field
+                    type="number"
+                    label="Berat (KG)"
+                    v-model="berat"
+                    :rules="[rules.required]"
+                    required
+                  >
+                  </v-text-field>
+                </v-col>
+              </v-row>
             </v-form>
             <div class="py-3">
               <v-dialog v-model="dialog" width="500">
@@ -318,18 +320,21 @@ export default {
       kemasan_items: [{ id_kemasan: "PK", kemasan: "Package" }],
     };
   },
+  create() {
+    window.onbeforeunload = () => alert('Are you sure you want to leave?')
+  },
   methods: {
     next() {
       var form = null;
       if (this.e1 == 1) {
-        form = "form";
+        form = this.$refs.form.validate();
       } else if (this.e1 == 2) {
-        form = "form2";
+        form = this.$refs.form2.validate();
       } else if (this.e1 == 3) {
         this.e1++;
         return;
       }
-      if (this.$refs.[form].validate()) {
+      if (form) {
         this.e1++;
       }
     },
@@ -361,5 +366,13 @@ export default {
     }
     next();
   },
+  beforeMount() {
+    window.addEventListener("beforeunload", event => {
+      if (!this.isEditing) return
+      event.preventDefault()
+      // Chrome requires returnValue to be set.
+      event.returnValue = ""
+    })
+  }
 };
 </script>

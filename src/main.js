@@ -11,8 +11,11 @@ Vue.config.productionTip = false
 require('./store/subcriber')
 
 // axios.defaults.baseURL = 'http://localhost/backend-laravel/public/api'
-axios.defaults.baseURL = 'http://localhost:8000/api'
-axios.defaults.headers.common['X-CSRF-TOKEN'] = null
+// axios.defaults.baseURL = 'http://localhost:8000/api'
+// axios.defaults.baseURL = 'http://192.168.16.5:5000/api'
+axios.defaults.baseURL = 'http://localhost:5000/api'
+// axios.defaults.baseURL = 'http://192.168.16.5:8000/api'
+// axios.defaults.headers.common['X-CSRF-TOKEN'] = null
 router.beforeEach((to, from, next) => {
   // let tes = store.state.auth.token
   // store.dispatch('auth/attempt', localStorage.getItem('token'))
