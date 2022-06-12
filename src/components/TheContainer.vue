@@ -1,7 +1,7 @@
 <template>
   <!-- App.vue -->
 
-  <v-app :style="{background: $vuetify.theme.themes[theme].background}">
+  <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
     <Navbar />
     <!-- <Sidebar /> -->
 
@@ -11,7 +11,7 @@
       <v-container>
         <!-- If using vue-router -->
         <!-- <transition name="fade" mode="out-in"> -->
-          <router-view :key="$route.path"></router-view>
+        <router-view :key="$route.path"></router-view>
         <!-- </transition> -->
       </v-container>
     </v-main>
@@ -43,7 +43,9 @@ export default {
 .fade-leave-active {
   transition: opacity 0.3s;
 }
-.fade-enter, .fade-leave-to  {
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

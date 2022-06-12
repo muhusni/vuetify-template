@@ -6,17 +6,13 @@
       <v-stepper v-model="e1" alt-labels flat elevation="0">
         <!-- Label -->
         <v-stepper-header>
-          <v-stepper-step :complete="e1 > 1" step="1">
-            Data Pengajuan
-          </v-stepper-step>
+          <v-stepper-step :complete="e1 > 1" step="1">Data Pengajuan</v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step :complete="e1 > 2" step="2">
-            Data Barang
-          </v-stepper-step>
+          <v-stepper-step :complete="e1 > 2" step="2">Data Barang</v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step :complete="e1 > 3" step="3"> Lampiran</v-stepper-step>
+          <v-stepper-step :complete="e1 > 3" step="3">Lampiran</v-stepper-step>
           <v-divider></v-divider>
-          <v-stepper-step step="4"> Name of step 3 </v-stepper-step>
+          <v-stepper-step step="4">Name of step 3</v-stepper-step>
         </v-stepper-header>
 
         <!-- Form step -->
@@ -24,7 +20,7 @@
           <v-stepper-content step="1">
             <v-card flat class="mb-12">
               <v-form ref="form" @submit.prevent="submit">
-                <v-container class="">
+                <v-container class>
                   <v-row>
                     <v-col cols="12" md="6">
                       <v-text-field
@@ -128,8 +124,7 @@
                     v-model="jumlah_kemasan"
                     :rules="[rules.required, rules.kemasan]"
                     required
-                  >
-                  </v-text-field>
+                  ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-autocomplete
@@ -137,7 +132,7 @@
                     v-model="jenis_kemasan"
                     :items="kemasan_items"
                     :item-text="
-                      (item) => `${item.id_kemasan} - ${item.kemasan}`
+                      (item) => `${ item.id_kemasan } - ${ item.kemasan }`
                     "
                     item-value="id_kemasan"
                     :rules="[rules.required]"
@@ -150,8 +145,7 @@
                     v-model="berat"
                     :rules="[rules.required]"
                     required
-                  >
-                  </v-text-field>
+                  ></v-text-field>
                 </v-col>
               </v-row>
             </v-form>
@@ -159,43 +153,37 @@
               <v-dialog v-model="dialog" width="500">
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn color="primary" v-bind="attrs" v-on="on">
-                    <v-icon>mdi-plus</v-icon> Tambah Barang
+                    <v-icon>mdi-plus</v-icon>Tambah Barang
                   </v-btn>
                 </template>
 
                 <v-card>
                   <v-form ref="formBarang">
-                    <v-card-title class="text-h5 text--white">
-                      Tambah barang
-                    </v-card-title>
+                    <v-card-title class="text-h5 text--white">Tambah barang</v-card-title>
 
                     <v-card-text>
                       <v-text-field
                         label="Uraian Barang"
                         v-model="nama_barang"
                         :rules="[rules.required]"
-                      >
-                      </v-text-field>
+                      ></v-text-field>
                       <v-text-field
                         label="Jumlah Barang"
                         v-model="jumlah_barang"
                         type="number"
                         :rules="[rules.required]"
-                      >
-                      </v-text-field>
+                      ></v-text-field>
                       <v-text-field
                         label="Satuan Barang"
                         v-model="satuan_barang"
                         :rules="[rules.required]"
-                      >
-                      </v-text-field>
+                      ></v-text-field>
                       <v-text-field
                         label="Nilai Barang"
                         type="number"
                         v-model="nilai_barang"
                         :rules="[rules.required]"
-                      >
-                      </v-text-field>
+                      ></v-text-field>
                     </v-card-text>
 
                     <v-divider></v-divider>
@@ -203,7 +191,7 @@
                     <v-card-actions>
                       <v-spacer></v-spacer>
                       <v-btn color="primary" text @click="tambahBarang">
-                        <v-icon>mdi-plus</v-icon> Tambah
+                        <v-icon>mdi-plus</v-icon>Tambah
                       </v-btn>
                     </v-card-actions>
                   </v-form>
@@ -224,7 +212,7 @@
                 <tbody>
                   <tr v-for="item in barang" :key="item.nama_barang">
                     <td>{{ item.nama_barang }}</td>
-                    <td>{{ `${item.jumlah_barang} ${item.satuan_barang}` }}</td>
+                    <td>{{ `${ item.jumlah_barang } ${ item.satuan_barang }` }}</td>
                     <td>{{ item.nilai_barang }}</td>
                     <td class="text-xs-left">
                       <v-btn icon @click="removeBarang(item)">
@@ -238,20 +226,15 @@
           </v-stepper-content>
 
           <v-stepper-content step="3">
-            <v-card
-              class="mb-12"
-              color="grey lighten-1"
-              height="200px"
-            ></v-card>
+            <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
     </v-card-text>
     <v-card-actions class="d-flex justify-space-between">
       <div>
-        <v-btn class="" text @click="back()" v-if="e1 > 1">
-          <v-icon right dark>mdi-arrow-left</v-icon>
-          &nbsp;Back
+        <v-btn class text @click="back()" v-if="e1 > 1">
+          <v-icon right dark>mdi-arrow-left</v-icon>&nbsp;Back
         </v-btn>
       </div>
       <div>
@@ -266,7 +249,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       e1: 1,
       isEditing: true,
@@ -320,11 +303,11 @@ export default {
       kemasan_items: [{ id_kemasan: "PK", kemasan: "Package" }],
     };
   },
-  create() {
+  create () {
     window.onbeforeunload = () => alert('Are you sure you want to leave?')
   },
   methods: {
-    next() {
+    next () {
       var form = null;
       if (this.e1 == 1) {
         form = this.$refs.form.validate();
@@ -338,10 +321,10 @@ export default {
         this.e1++;
       }
     },
-    back() {
+    back () {
       this.e1--;
     },
-    tambahBarang() {
+    tambahBarang () {
       this.barang.push({
         nama_barang: this.nama_barang,
         jumlah_barang: this.jumlah_barang,
@@ -351,14 +334,14 @@ export default {
       this.$refs.formBarang.reset();
       this.dialog = false;
     },
-    removeBarang(id) {
+    removeBarang (id) {
       this.barang.splice(id, 1);
     },
   },
   computed: {
-    itemsKemasan: (items) => `${items.id_kemasan} - ${items.kemasan}`,
+    itemsKemasan: (items) => `${ items.id_kemasan } - ${ items.kemasan }`,
   },
-  beforeRouteLeave(to, from, next) {
+  beforeRouteLeave (to, from, next) {
     if (this.isEditing) {
       if (!window.confirm("Leave without saving?")) {
         return;
@@ -366,7 +349,7 @@ export default {
     }
     next();
   },
-  beforeMount() {
+  beforeMount () {
     window.addEventListener("beforeunload", event => {
       if (!this.isEditing) return
       event.preventDefault()
