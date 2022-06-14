@@ -31,11 +31,12 @@
             </v-row>
             <v-row>
               <v-col>
-                <v-btn color="warning" elevation="2" block type="submit" class="white--text" raised>Lupa Password
+                <v-btn color="primary" elevation="2" outlined type="button" class="white--text" raised>Lupa
+                  Password
                 </v-btn>
               </v-col>
               <v-col>
-                <v-btn color="success" elevation="2" block type="submit" class="white--text" raised>Register</v-btn>
+                <v-btn color="warning" elevation="2" block type="submit" class="black--text" raised>Register</v-btn>
               </v-col>
             </v-row>
           </v-container>
@@ -122,3 +123,8 @@ export default {
   },
 };
 </script>
+<style>
+.v-data-table__wrapper td {
+  padding: 5 5 5 5
+}
+</style>

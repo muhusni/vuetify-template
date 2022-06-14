@@ -6,18 +6,20 @@
     </v-navigation-drawer>
     <v-app-bar app clipped-left elevate-on-scroll outlined color="secondary">
       <!-- <v-app-bar-nav-icon> -->
-      <v-img max-width="100" height="35" src="@/assets/iconIonBeta.jpeg">
+      <v-img class="d-none d-md-flex" max-width="100" height="35" src="@/assets/iconIonBeta.jpeg">
       </v-img>
       <!-- </v-app-bar-nav-icon> -->
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <!-- <v-toolbar-title>Aplikasi Anya</v-toolbar-title> -->
       <v-spacer></v-spacer>
       <v-text>
-        <div class="d-none d-lg-block "><b>KANTOR PELAYANAN UTAMA BEA DAN CUKAI TIPE B BATAM</b><br>
+        <div class="d-none d-md-block "><b>KANTOR PELAYANAN UTAMA BEA DAN CUKAI TIPE B BATAM</b><br>
           <font style="font-size: 12px;">TELEPON (0778) 458818, 458263; FAKSIMILI (0778) 458149;SURAT ELEKTRONIK
             kpubcbatam@kemenkeu.go.id
           </font>
         </div>
+        <v-img class="d-flex d-sm-flex d-md-none" max-width="100" height="35" src="@/assets/iconIonBeta.jpeg">
+        </v-img>
       </v-text>
       <v-spacer></v-spacer>
       <!-- <v-btn icon>

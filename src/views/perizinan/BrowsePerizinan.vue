@@ -83,7 +83,6 @@ export default {
             tes: "",
             brows: [],
             search: '',
-            isLoading: true,
             headers: [
                 {
                     text: "Nama Perusahaan",
@@ -115,10 +114,10 @@ export default {
         getBrows(page) {
             if (typeof page === "undefined") {
                 page =
-                    "http://perizinanbcbatam.beacukai.go.id/backper/public/api/bc/brows/browslist2";
+                    "brows/listv2";
             }
             var auth = {
-                user: "muhamad.husni.001",
+                user: "tes",
                 q: "",
                 p: "",
                 a: "",
@@ -128,7 +127,6 @@ export default {
             };
             axios.post(page, auth).then((response) => {
                 this.brows = response.data;
-                this.isLoading = false;
             });
         },
         getColor(status) {
