@@ -16,9 +16,10 @@ export default new Vuetify({
       },
       dark: {
         // primary: colors.shades,
+        success: '#246f27',
+        warning: '#dd7b00',
         primary: "#016b91",
-        red: "#D32F2F",
-        error: "#D32F2F",
+        error: "#C63333",
       },
     },
     dark: false,

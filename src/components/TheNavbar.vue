@@ -12,7 +12,7 @@
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <!-- <v-toolbar-title>Aplikasi Anya</v-toolbar-title> -->
       <v-spacer></v-spacer>
-      <v-text>
+      <div>
         <div class="d-none d-md-block "><b>KANTOR PELAYANAN UTAMA BEA DAN CUKAI TIPE B BATAM</b><br>
           <font style="font-size: 12px;">TELEPON (0778) 458818, 458263; FAKSIMILI (0778) 458149;SURAT ELEKTRONIK
             kpubcbatam@kemenkeu.go.id
@@ -20,7 +20,7 @@
         </div>
         <v-img class="d-flex d-sm-flex d-md-none" max-width="100" height="35" src="@/assets/iconIonBeta.jpeg">
         </v-img>
-      </v-text>
+      </div>
       <v-spacer></v-spacer>
       <!-- <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
@@ -32,6 +32,7 @@
       <v-btn icon @click="toggle_dark_mode" v-else title="Switch to dark mode">
         <v-icon>mdi-brightness-3</v-icon>
       </v-btn>
+      {{ this.$store.getters['auth/user']['username'] }}
       <v-menu offset-y>
         <template v-slot:activator="{ on, attrs }">
           <!-- <v-btn color="primary" dark v-bind="attrs" v-on="on">

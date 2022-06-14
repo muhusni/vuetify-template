@@ -14,6 +14,16 @@
         <router-view :key="$route.path"></router-view>
         <!-- </transition> -->
       </v-container>
+      <v-snackbar v-model="$store.state.snackbar" :color="$store.state.snackbarData.status" top>
+        {{ $store.state.snackbarData.message }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="white" text v-bind="attrs"
+            @click="$store.commit('SET_SNACKBAR', { active: false, message: null, status: null })">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-main>
 
     <v-footer app>

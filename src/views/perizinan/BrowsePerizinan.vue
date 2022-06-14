@@ -9,7 +9,7 @@
                     <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details>
                     </v-text-field>
                 </v-card-title>
-                <v-data-table dense :headers="headers" :items="brows" :items-per-page="5" :search="search"
+                <v-data-table :headers="headers" :items="brows" :items-per-page="5" :search="search"
                     :loading="!brows.length" class="elevation-1" loading-text="Loading... Please wait">
                     <template v-slot:item.ur_status="{ item }">
                         <v-chip :color="getColor(item.status)">
@@ -130,9 +130,9 @@ export default {
             });
         },
         getColor(status) {
-            if (status === "20") return 'orange'
-            else if (status === "90") return 'red'
-            else if (status === "50") return 'green'
+            if (status >= "20" && status < "50") return this.$vuetify.theme.currentTheme.warning
+            else if (status === "90") return this.$vuetify.theme.currentTheme.error
+            else if (status === "50") return this.$vuetify.theme.currentTheme.success
             else return null
         },
     },

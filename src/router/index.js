@@ -22,7 +22,7 @@ import BrowsePindahan from "@/views/barang-pindahan/Browse";
 import PerekamanPindahan from "@/views/barang-pindahan/Perekaman";
 
 // Perizinan
-import PengajuanPerizinan from "@/views/perizinan/Pengajuan";
+import PengajuanPerizinan from "@/views/perizinan/PengajuanPerizinan";
 import BrowsePerizinan from "@/views/perizinan/BrowsePerizinan";
 import DetailBrowsePerizinan from "@/views/perizinan/DetailBrowsePerizinan";
 Vue.use(VueRouter);

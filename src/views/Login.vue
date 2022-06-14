@@ -1,7 +1,7 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
     <v-card elevation="" width="500" class="ma-auto justify-center" :loading="loading" :disabled="loading">
-      <v-img class="align-end" height="150px" src="@/assets/iconIonBeta.jpeg">
+      <v-img class="align-end" height="175px" src="@/assets/iconIonBeta.jpeg">
         <!-- <v-card-title>Sign In</v-card-title> -->
       </v-img>
       <!-- <v-card-title class="justify-center mt-5"> Login </v-card-title> -->
@@ -111,7 +111,9 @@ export default {
         this.login(this.form)
           .then(() => {
             this.$store.commit("auth/SET_LOADING", false);
-            this.$router.push({ path: "home" });
+            this.$router.push({ path: "home" }).then(() => {
+              this.$store.commit('SET_SNACKBAR', { active: true, message: 'Berhasil Login', status: 'success' })
+            });
 
           })
       }
