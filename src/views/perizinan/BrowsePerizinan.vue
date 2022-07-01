@@ -9,8 +9,10 @@
                     <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details>
                     </v-text-field>
                 </v-card-title>
-                <v-data-table :headers="headers" :items="brows" :items-per-page="5" :search="search"
-                    :loading="!brows.length" class="elevation-1" loading-text="Loading... Please wait">
+                <v-data-table :headers="headers" :items="brows" :footer-props="{
+                    'items-per-page-options': [5, 10, 20, 50]
+                }" :items-per-page="5" :search="search" :loading="!brows.length" class="elevation-1"
+                    loading-text="Loading... Please wait">
                     <template v-slot:item.ur_status="{ item }">
                         <v-chip :color="getColor(item.status)">
                             {{ item.ur_status }}
@@ -113,8 +115,8 @@ export default {
         // },
         getBrows(page) {
             if (typeof page === "undefined") {
-                page =
-                    "brows/listv2";
+                // page = "brows/listv2";
+                page = 'bc/brows/browslist2'
             }
             var auth = {
                 user: "tes",
