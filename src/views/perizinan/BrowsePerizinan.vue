@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <v-card elevation="2">
-            <v-card-title> Browse </v-card-title>
+            <v-card-title> Browse Perizinan </v-card-title>
             <v-card-subtitle> Browse Perizinan yang telah diajukan </v-card-subtitle>
             <v-card-text>
                 <v-card-title>
@@ -25,49 +25,23 @@
                         }}</v-chip>
                     </template>
                     <template v-slot:item.actions="{ item }">
-                        <v-btn :to="'/browse/' + item.id_permohonan" text icon>
+                        <v-btn :to="'/browse/' + item.id_permohonan" icon>
                             <v-icon color="primary"> mdi-magnify </v-icon>
                         </v-btn>
                         <a target="_blank"
                             :href="'http://perizinanbcbatam.beacukai.go.id/backper/public/api/pdfBc/' + item.id_permohonan">
-                            <v-btn v-if="item.status === '50'" text icon>
+                            <v-btn v-if="item.status === '50'" icon>
                                 <v-icon color="success"> mdi-printer </v-icon>
                             </v-btn>
                         </a>
+                        <v-btn :to="'/browse/' + item.id_permohonan" icon>
+                            <v-icon color="warning"> mdi-text </v-icon>
+                        </v-btn>
+                        <v-btn v-if="item.status === '90'" :to="'/browse/' + item.id_permohonan" icon>
+                            <v-icon color="grey-400"> mdi-pencil </v-icon>
+                        </v-btn>
                     </template>
                 </v-data-table>
-                <!-- <v-simple-table>
-                    <template v-slot:default>
-                        <thead>
-                            <tr>
-                                <th class="text-left">Nama Perusahaan</th>
-                                <th class="text-left">Tgl Mohon</th>
-                                <th>Tgl Kirim</th>
-                                <th>No Mohon</th>
-                                <th>Tgl Setuju</th>
-                                <th>No Setuju</th>
-                                <th>Status</th>
-                                <th>Jenis Izin</th>
-                                <th>Action</th>
-                                <th>Fl</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="mohon in brows" :key="mohon.id_permohonan">
-                                <td>{{ mohon.NM_PERUSAHAAN }}</td>
-                                <td>{{ mohon.tgl_mohon }}</td>
-                                <td>{{ mohon.wk_kirim }}</td>
-                                <td>{{ mohon.no_mohon }}</td>
-                                <td>{{ mohon.tgl_setuju }}</td>
-                                <td>{{ mohon.no_setuju }}</td>
-                                <td>{{ mohon.ur_status }}</td>
-                                <td>{{ mohon.nama_ijin }}</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </template>
-                </v-simple-table> -->
             </v-card-text>
         </v-card>
     </div>
@@ -78,7 +52,7 @@ import axios from "axios";
 
 export default {
     name: "Home",
-    data() {
+    data () {
         return {
             tes: "",
             brows: [],
@@ -101,7 +75,7 @@ export default {
             ],
         };
     },
-    mounted() {
+    mounted () {
         // this.fungsi();
         this.getBrows();
     },
@@ -111,7 +85,7 @@ export default {
         //         this.tes = response.data;
         //     });
         // },
-        getBrows(page) {
+        getBrows (page) {
             if (typeof page === "undefined") {
                 page =
                     "brows/listv2";
@@ -129,7 +103,7 @@ export default {
                 this.brows = response.data;
             });
         },
-        getColor(status) {
+        getColor (status) {
             if (status >= "20" && status < "50") return this.$vuetify.theme.currentTheme.warning
             else if (status === "90") return this.$vuetify.theme.currentTheme.error
             else if (status === "50") return this.$vuetify.theme.currentTheme.success

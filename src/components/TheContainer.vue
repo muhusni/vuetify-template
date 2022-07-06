@@ -28,6 +28,8 @@
 
     <v-footer app>
       <!-- -->
+      {{ new Date().getFullYear() }} — <a href="htpp://perizinanbcbatam.beacukai.go.id/"><strong>Ion Beta
+          2.0</strong></a>
     </v-footer>
   </v-app>
 </template>
@@ -42,7 +44,7 @@ export default {
     // Sidebar,
   },
   computed: {
-    theme() {
+    theme () {
       return this.$vuetify.theme.dark ? "dark" : "light";
     },
   },

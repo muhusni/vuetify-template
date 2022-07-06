@@ -5,9 +5,8 @@
       <v-card-subtitle> Beranda </v-card-subtitle>
       <v-card-text>
         <p>
-          Selamat datang di Aplikasi
+          Selamat datang di Aplikasi Perizinan Online Beacukai Batam
         </p>
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores a ex aspernatur necessitatibus, provident quae laboriosam consectetur reprehenderit eaque ipsa sequi exercitationem ipsam at molestiae atque iure nihil eligendi dignissimos.</p>
       </v-card-text>
     </v-card>
   </div>
@@ -26,7 +25,7 @@ export default {
   mounted () {
     // this.fungsi()
   },
-  methods:{
+  methods: {
     // fungsi () {
     // axios.get('/posts').then((response) => {
     //   this.tes = response.data})}

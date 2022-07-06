@@ -13,13 +13,16 @@ export default new Vuetify({
         primary: "#20a8d8",
         secondary: "#fff",
         // primary: '#66BB6A'
+        border: '#e0e0e0'
       },
       dark: {
         // primary: colors.shades,
         success: '#246f27',
         warning: '#dd7b00',
+        secondary: '#1e1e1e',
         primary: "#016b91",
         error: "#C63333",
+        border: '#393939'
       },
     },
     dark: false,

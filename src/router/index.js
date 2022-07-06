@@ -23,8 +23,10 @@ import PerekamanPindahan from "@/views/barang-pindahan/Perekaman";
 
 // Perizinan
 import PengajuanPerizinan from "@/views/perizinan/PengajuanPerizinan";
+import DetailPengajuanPerizinan from "@/views/perizinan/DetailPengajuanPerizinan";
 import BrowsePerizinan from "@/views/perizinan/BrowsePerizinan";
-import DetailBrowsePerizinan from "@/views/perizinan/DetailBrowsePerizinan";
+import DetailBrowsePerizinan from '@/views/perizinan/DetailBrowsePerizinan';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -61,6 +63,14 @@ const routes = [
         path: "/pengajuan",
         name: "Pengajuan",
         component: PengajuanPerizinan,
+        meta: {
+          requiresAuth: true,
+        },
+      },
+      {
+        path: "/pengajuan/:id",
+        name: "Pengajuan",
+        component: DetailPengajuanPerizinan,
         meta: {
           requiresAuth: true,
         },

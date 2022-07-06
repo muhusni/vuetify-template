@@ -1,16 +1,16 @@
 <template>
   <v-app :style="{ background: $vuetify.theme.themes[theme].background }">
-    <v-card elevation="" width="500" class="ma-auto justify-center" :loading="loading" :disabled="loading">
-      <v-img class="align-end" height="175px" src="@/assets/iconIonBeta.jpeg">
-        <!-- <v-card-title>Sign In</v-card-title> -->
-      </v-img>
-      <!-- <v-card-title class="justify-center mt-5"> Login </v-card-title> -->
-      <!-- <v-card-subtitle>  </v-card-subtitle> -->
-      <v-card-text>
-        <v-alert class="px-3" v-if="alert" type="error" dismissible dense outlined>Username/Password yang anda masukan
-          salah</v-alert>
-        <v-form ref="form" @submit.prevent="submit" method="POST">
-          <v-container>
+    <v-container class="ma-auto justify-center">
+      <v-card elevation="" width="475px" class="ma-auto justify-center" :loading="loading" :disabled="loading">
+        <v-img class="align-end" height="150px" src="@/assets/iconIonBeta.jpeg">
+          <!-- <v-card-title>Sign In</v-card-title> -->
+        </v-img>
+        <!-- <v-card-title class="justify-center mt-5"> Login </v-card-title> -->
+        <!-- <v-card-subtitle>  </v-card-subtitle> -->
+        <v-card-text>
+          <v-alert class="px-3" v-if="alert" type="error" dismissible dense outlined>Username/Password yang anda masukan
+            salah</v-alert>
+          <v-form ref="form" @submit.prevent="submit" method="POST">
             <v-row>
               <v-col cols="12">
                 <v-text-field label="Username" v-model="form.USER_NAME" :rules="[rules.required]" counter>
@@ -39,10 +39,10 @@
                 <v-btn color="warning" elevation="2" block type="submit" class="black--text" raised>Register</v-btn>
               </v-col>
             </v-row>
-          </v-container>
-        </v-form>
-      </v-card-text>
-    </v-card>
+          </v-form>
+        </v-card-text>
+      </v-card>
+    </v-container>
   </v-app>
 </template>
 
@@ -52,7 +52,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Home",
   components: {},
-  data() {
+  data () {
     return {
       form: {
         USER_NAME: "",
@@ -67,7 +67,7 @@ export default {
       },
     };
   },
-  mounted() {
+  mounted () {
     const theme = localStorage.getItem("dark_theme");
     if (theme) {
       if (theme === "true") {
@@ -88,13 +88,13 @@ export default {
       authenticated: "auth/authenticated",
       user: "auth/user",
     }),
-    loading() {
+    loading () {
       return this.$store.getters["auth/isLoading"];
     },
-    alert() {
+    alert () {
       return this.$store.getters["auth/loginAlert"];
     },
-    theme() {
+    theme () {
       return this.$vuetify.theme.dark ? "dark" : "light";
     },
   },
@@ -103,10 +103,10 @@ export default {
       login: "auth/login",
       handleClick: "handleClick",
     }),
-    goRegister() {
+    goRegister () {
       this.$router.push({ path: "register" });
     },
-    submit() {
+    submit () {
       if (this.$refs.form.validate()) {
         this.login(this.form)
           .then(() => {

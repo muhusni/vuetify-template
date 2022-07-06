@@ -12,7 +12,7 @@ let menu = [
     dropdown: true,
     submenu: [
       {
-        url: "pengajuan",
+        url: "/pengajuan",
         name: "Pengajuan",
         icon: "mdi-plus",
       },

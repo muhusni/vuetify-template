@@ -68,7 +68,7 @@ export default {
   components: {
     Sidebar,
   },
-  mounted() {
+  mounted () {
     console.log(localStorage.getItem("dark_theme"));
     const theme = localStorage.getItem("dark_theme");
     if (theme) {
@@ -93,7 +93,7 @@ export default {
     ...mapActions({
       signOut: "auth/logout",
     }),
-    logout() {
+    logout () {
       this.signOut().then(() => {
         this.$router.push({ path: "/login" });
       });

@@ -73,7 +73,7 @@
 </template>
 <script>
 export default {
-    data() {
+    data () {
         return {
             dialog: false,
             pengajuan: {
@@ -94,7 +94,7 @@ export default {
             }
         }
     },
-    created() {
+    created () {
         if (!this.$store.state.perizinan.kdid.length) {
             this.$store.dispatch('perizinan/getID')
         }
@@ -111,7 +111,7 @@ export default {
         //         this.dialog = false
         //     }, 3000)
         // },
-        handleSubmit() {
+        handleSubmit () {
             if (this.$refs.form.validate()) {
                 this.$store.commit('SET_LOADING_MODAL', true)
                 this.$http.post('savepengajuan', this.pengajuan)
@@ -119,6 +119,7 @@ export default {
                         this.dialog = false
                         this.$store.commit('SET_SNACKBAR', { active: true, message: response.data.message, status: response.data.status })
                         this.$store.commit('SET_LOADING_MODAL', false)
+                        this.$parent.$parent.getPengajuan()
                         // swal(response.data.status, response.data.message, response.data.status).then(() => {
                         //     if (response.data.status === 'success') {
                         //         this.$router.push('/pengajuan')
