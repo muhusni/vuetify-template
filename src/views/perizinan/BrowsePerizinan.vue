@@ -54,7 +54,7 @@ import axios from "axios";
 
 export default {
     name: "Home",
-    data () {
+    data() {
         return {
             tes: "",
             brows: [],
@@ -77,7 +77,7 @@ export default {
             ],
         };
     },
-    mounted () {
+    mounted() {
         // this.fungsi();
         this.getBrows();
     },
@@ -87,10 +87,10 @@ export default {
         //         this.tes = response.data;
         //     });
         // },
-        getBrows (page) {
+        getBrows(page) {
             if (typeof page === "undefined") {
                 // page = "brows/listv2";
-                page = 'bc/brows/browslist2'
+                page = 'brows/listv2'
             }
             var auth = {
                 user: "tes",
@@ -105,7 +105,7 @@ export default {
                 this.brows = response.data;
             });
         },
-        getColor (status) {
+        getColor(status) {
             if (status >= "20" && status < "50") return this.$vuetify.theme.currentTheme.warning
             else if (status === "90") return this.$vuetify.theme.currentTheme.error
             else if (status === "50") return this.$vuetify.theme.currentTheme.success

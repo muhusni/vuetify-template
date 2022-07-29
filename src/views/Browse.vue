@@ -5,24 +5,11 @@
       <v-card-subtitle> Dasbor </v-card-subtitle>
       <v-card-text>
         <v-card-title>
-          <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-          ></v-text-field>
+          <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details>
+          </v-text-field>
         </v-card-title>
-        <v-data-table
-          dense
-          :headers="headers"
-          :items="brows.data"
-          :items-per-page="5"
-          :search="search"
-          :loading="isLoading"
-          class="elevation-1"
-          loading-text="Loading... Please wait"
-        ></v-data-table>
+        <v-data-table dense :headers="headers" :items="brows.data" :items-per-page="5" :search="search"
+          :loading="isLoading" class="elevation-1" loading-text="Loading... Please wait"></v-data-table>
         <!-- <v-simple-table>
           <template v-slot:default>
             <thead>
@@ -101,7 +88,7 @@ export default {
     getBrows(page) {
       if (typeof page === "undefined") {
         page =
-          "http://perizinanbcbatam.beacukai.go.id/backper/public/api/bc/brows/browslist2";
+          "brows/listv2";
       }
       var auth = {
         user: "muhamad.husni.001",
