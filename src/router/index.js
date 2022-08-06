@@ -8,15 +8,6 @@ import Home from "@/views/Home";
 import About from "@/views/About";
 import Login from "@/views/Login";
 
-// Setting
-import ViewAllUsers from "@/views/settings/users/ViewUsers";
-import ViewUser from "@/views/settings/users/ViewUser";
-import Menus from "@/views/settings/Menus";
-
-// example
-import UploadFile from "@/views/example/UploadFile";
-import ToDo from "@/views/example/ToDo";
-
 // Barang Pindahan
 import BrowsePindahan from "@/views/barang-pindahan/Browse";
 import PerekamanPindahan from "@/views/barang-pindahan/Perekaman";
@@ -87,62 +78,6 @@ const routes = [
         path: "/browse/:id",
         name: "Detail Perizinan",
         component: DetailBrowsePerizinan,
-        meta: {
-          requiresAuth: true,
-        },
-      },
-    ],
-  },
-  {
-    path: "/setting",
-    redirect: "/setting/users",
-    component: Container,
-    name: "User Management",
-    children: [
-      {
-        path: "/setting/users",
-        name: "User Management",
-        component: ViewAllUsers,
-        meta: {
-          requiresAuth: true,
-        },
-      },
-      {
-        path: "/setting/users/:id",
-        name: "User",
-        component: ViewUser,
-        meta: {
-          requiresAuth: true,
-        },
-      },
-      {
-        path: "/setting/menu",
-        name: "Menu Management",
-        component: Menus,
-        meta: {
-          requiresAuth: true,
-        },
-      },
-    ],
-  },
-  {
-    path: "/example",
-    redirect: "/example/upload",
-    component: Container,
-    name: "Upload File",
-    children: [
-      {
-        path: "/example/upload",
-        name: "Upload File",
-        component: UploadFile,
-        meta: {
-          requiresAuth: true,
-        },
-      },
-      {
-        path: "/example/todo",
-        name: "To Do List",
-        component: ToDo,
         meta: {
           requiresAuth: true,
         },

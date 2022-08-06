@@ -39,13 +39,37 @@
                         <v-btn :to="'/browse/' + item.id_permohonan" icon>
                             <v-icon color="warning"> mdi-text </v-icon>
                         </v-btn>
-                        <v-btn v-if="item.status === '90'" :to="'/browse/' + item.id_permohonan" icon>
-                            <v-icon color="grey-400"> mdi-pencil </v-icon>
-                        </v-btn>
+                        <v-tooltip bottom>
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn v-if="item.status === '90'" @click="openAjuUlang(item.id_permohonan)"
+                                    v-bind="attrs" v-on="on" text icon>
+                                    <v-icon color="grey-400"> mdi-pencil </v-icon>
+                                </v-btn>
+                            </template>
+                            <span>Ajukan Ulang</span>
+                        </v-tooltip>
                     </template>
                 </v-data-table>
             </v-card-text>
         </v-card>
+        <v-row justify="center">
+            <v-dialog v-model="dialogAjuUlang" max-width="450">
+                <v-card :loading="$store.state.isLoadingModal" :disabled="$store.state.isLoadingModal">
+                    <v-card-title class="text-h5">
+                        Ajukan Ulang dokumen ini?
+                    </v-card-title>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="" @click="dialogAjuUlang = false">
+                            Batal
+                        </v-btn>
+                        <v-btn color="primary" @click="ajuUlang(idAju)">
+                            Ajukan
+                        </v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
+        </v-row>
     </div>
 </template>
 
@@ -54,11 +78,13 @@ import axios from "axios";
 
 export default {
     name: "Home",
-    data() {
+    data () {
         return {
             tes: "",
             brows: [],
             search: '',
+            dialogAjuUlang: false,
+            idAju: '',
             headers: [
                 {
                     text: "Nama Perusahaan",
@@ -77,17 +103,28 @@ export default {
             ],
         };
     },
-    mounted() {
+    mounted () {
         // this.fungsi();
         this.getBrows();
     },
     methods: {
-        // fungsi() {
-        //     axios.get("/posts").then((response) => {
-        //         this.tes = response.data;
-        //     });
-        // },
-        getBrows(page) {
+        openAjuUlang (id) {
+            this.idAju = id;
+            this.dialogAjuUlang = !this.dialogAjuUlang
+        },
+        ajuUlang (id) {
+            this.$store.commit('SET_LOADING_MODAL', true)
+            var data = {
+                id_permohonan: id
+            }
+            axios.post('ajukembali', data).then((response) => {
+                this.$router.push('/pengajuan/' + response.data.id).then(() => {
+                    this.$store.commit('SET_SNACKBAR', { active: true, message: 'Berhasil membuat dokumen', status: 'success' })
+                    this.$store.commit('SET_LOADING_MODAL', false)
+                })
+            })
+        },
+        getBrows (page) {
             if (typeof page === "undefined") {
                 // page = "brows/listv2";
                 page = 'brows/listv2'
@@ -105,7 +142,7 @@ export default {
                 this.brows = response.data;
             });
         },
-        getColor(status) {
+        getColor (status) {
             if (status >= "20" && status < "50") return this.$vuetify.theme.currentTheme.warning
             else if (status === "90") return this.$vuetify.theme.currentTheme.error
             else if (status === "50") return this.$vuetify.theme.currentTheme.success
