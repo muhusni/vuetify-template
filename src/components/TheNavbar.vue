@@ -1,13 +1,11 @@
 <template>
   <div>
-    <v-navigation-drawer app clipped v-model="drawer" dark>
-      <!-- -->
+    <v-navigation-drawer clipped app v-model="drawer">
       <Sidebar />
     </v-navigation-drawer>
-    <v-app-bar app clipped-left elevate-on-scroll color="primary" dark>
+    <v-app-bar app elevate-on-scroll clipped-left color="primary" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Aplikasi Anya</v-toolbar-title>
+      <v-toolbar-title>Documentation App</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -22,7 +20,7 @@
         <v-icon>mdi-brightness-3</v-icon>
       </v-btn>
       <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
+        <template v-slot:activator="{on, attrs}">
           <!-- <v-btn color="primary" dark v-bind="attrs" v-on="on">
             Dropdown
           </v-btn> -->
@@ -36,7 +34,7 @@
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>
             </v-list-item-icon>
-            <v-list-item-title >Logout</v-list-item-title>
+            <v-list-item-title>Logout</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -45,7 +43,7 @@
 </template> 
 <script>
 import Sidebar from "./TheSidebar";
-import { mapActions } from "vuex";
+import {mapActions} from "vuex";
 
 export default {
   data: () => ({
@@ -56,7 +54,7 @@ export default {
   components: {
     Sidebar,
   },
-  mounted() {
+  mounted () {
     console.log(localStorage.getItem("dark_theme"));
     const theme = localStorage.getItem("dark_theme");
     if (theme) {
@@ -81,9 +79,9 @@ export default {
     ...mapActions({
       signOut: "auth/logout",
     }),
-    logout() {
+    logout () {
       this.signOut().then(() => {
-        this.$router.push({ path: "/login" });
+        this.$router.push({path: "/login"});
       });
     },
   },

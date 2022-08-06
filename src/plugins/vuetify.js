@@ -6,23 +6,25 @@ import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-l
 Vue.use(Vuetify);
 
 export default new Vuetify({
-    theme: { 
-      themes: {
-        light:{
-          background: '#e4e5e6', // Not automatically applied #E8F5E9
-          primary: '#075E54'
-          // primary: '#66BB6A'
-        },
-        dark: {
-          // primary: colors.shades,
-          primary: '#3B6E6F',
-          red: '#D32F2F',
-          error: '#D32F2F'
-        }
+  theme: {
+    themes: {
+      light: {
+        background: '#FFF3E0', // Not automatically applied #E8F5E9
+        primary: '#182047',
+        secondary: '#ebb633'
+        // primary: '#66BB6A'
       },
-      dark: false 
+      dark: {
+        // primary: colors.shades,
+        primary: '#182047',
+        secondary: '#ebb633',
+        red: '#D32F2F',
+        error: '#D32F2F'
+      }
     },
-    icons: {
-      iconfont: 'mdi', // default - only for display purposes
-    }
-  })
+    dark: false
+  },
+  icons: {
+    iconfont: 'mdi', // default - only for display purposes
+  }
+})
