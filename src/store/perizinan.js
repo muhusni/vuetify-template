@@ -7,25 +7,34 @@ export default {
   namespaced: true,
   state: {
     kdid: [],
-    jenisIzin: []
+    jenisIzin: [],
+    ModalEdit: {
+      kd_dokap: '',
+      dialog: false,
+      data: [],
+      loading: false
+    }
   },
   mutations: {
-    SET_KDID(state, payload) {
+    SET_KDID (state, payload) {
       state.kdid = payload
     },
-    SET_JENIS_IZIN(state, payload) {
+    SET_JENIS_IZIN (state, payload) {
       state.jenisIzin = payload
+    },
+    SET_MODAL_EDIT (state, payload) {
+      state.ModalEdit.dialog = payload
     }
   },
   getters: {},
   actions: {
-    getID({ commit }) {
+    getID ({commit}) {
       axios.get('ref/kdid')
         .then(response => {
           commit('SET_KDID', response.data)
         })
     },
-    getJenisIzin({ commit }) {
+    getJenisIzin ({commit}) {
       axios.get('ref/jnijin')
         .then(response => {
           commit('SET_JENIS_IZIN', response.data)
