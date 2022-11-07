@@ -7,31 +7,40 @@
         <p>
           Selamat datang di Aplikasi
         </p>
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores a ex aspernatur necessitatibus,
-          provident quae laboriosam consectetur reprehenderit eaque ipsa sequi exercitationem ipsam at molestiae atque
-          iure nihil eligendi dignissimos.</p>
+        <v-btn :color=" this.$vuetify.theme.dark ? 'secondary' : 'primary' "
+          :class=" this.$vuetify.theme.dark ? 'primary--text' : 'secondary--text' " @click=" getLartas ">Click Me
+        </v-btn>
+        <p v-for="t in tes" :key=" t "> {{ t}}</p>
       </v-card-text>
     </v-card>
   </div>
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   name: 'Home',
   data () {
     return {
-      // tes: this.$store.getters['auth/user']
+      tes: ''
     }
   },
   mounted () {
     // this.fungsi()
   },
   methods: {
-    // fungsi () {
-    // axios.get('/posts').then((response) => {
-    //   this.tes = response.data})}
+    getLartas () {
+      axios.post('openapi/document', {asalData: "S", kodeDokumen: "20"}).then((response) => {
+        console.log(response)
+        this.tes = response.data.message
+      }).catch((error) => {
+        this.tes = error.response.data.message[0].split(',')
+      })
+    },
+    getLartas2 () {
+      axios.get('openapi/tarif-hs?kodeHs=36069020&tanggal=2022-07-20').then((response) => console.log(response))
+    }
   }
 }
 </script>
