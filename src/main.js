@@ -11,8 +11,8 @@ Vue.config.productionTip = false
 require('./store/subcriber')
 
 // axios.defaults.baseURL = 'http://localhost/backend-laravel/public/api'
-// axios.defaults.baseURL = 'http://localhost:8000/api'
-axios.defaults.baseURL = 'https://apisdev-gw.beacukai.go.id/'
+axios.defaults.baseURL = 'http://localhost:8000/api'
+// axios.defaults.baseURL = 'https://apisdev-gw.beacukai.go.id/'
 axios.defaults.headers.common['X-CSRF-TOKEN'] = null
 router.beforeEach((to, from, next) => {
   // let tes = store.state.auth.token
