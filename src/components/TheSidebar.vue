@@ -9,7 +9,7 @@
           <v-list-item-title>{{ item.title}}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-group :value="true" prepend-icon="mdi-account-circle">
+      <!-- <v-list-group :value="true" prepend-icon="mdi-account-circle">
         <template v-slot:activator>
           <v-list-item-title>Users</v-list-item-title>
         </template>
@@ -51,7 +51,7 @@
             </v-list-item-icon>
           </v-list-item>
         </v-list-group>
-      </v-list-group>
+      </v-list-group> -->
     </v-list>
   </div>
 </template>
