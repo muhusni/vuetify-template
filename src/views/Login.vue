@@ -48,8 +48,8 @@ export default {
   data () {
     return {
       form: {
-        username: "userdemoscs",
-        password: "Scs123456",
+        username: "",
+        password: "",
       },
       show: false,
       // isLoading: false,
@@ -102,10 +102,10 @@ export default {
     submit () {
       if (this.$refs.form.validate()) {
         this.login(this.form)
-          .then(() => {
+          .then((tes) => {
+            console.log(tes)
             this.$store.commit("auth/SET_LOADING", false);
             this.$router.push({path: "/"});
-
           })
       }
       // this.$refs.form.validate(
